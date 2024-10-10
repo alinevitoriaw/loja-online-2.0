@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+</head>
+<body>
+    <h1>Dashboard Admin</h1>
+    <h2>Clientes Cadastrados</h2>
+    <ul>
+        {% for cliente in clientes %}
+            <li>{{ cliente.nome }} ({{ cliente.loguin }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}">Sair</a>
+</body>
+</html>

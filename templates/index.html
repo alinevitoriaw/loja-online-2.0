@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Cadastro de Clientes</title>
+</head>
+<body>
+    <h1>Cadastro de Clientes</h1>
+    <form action="/cadastrar" method="post">
+        <input type="text" name="nome" placeholder="Nome completo" required>
+        <input type="text" name="loguin" placeholder="Loguin" required>
+        <input type="password" name="senha" placeholder="Senha" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="date" name="data_nascimento" placeholder="Data de Nascimento" required>
+        <input type="text" name="celular" placeholder="Número de Celular" required>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <h2>Clientes Cadastrados</h2>
+    <ul>
+        {% for cliente in clientes %}
+            <li>
+                {{ cliente.nome }} ({{ cliente.loguin }}) 
+                <a href="{{ url_for('detalhes', loguin=cliente.loguin) }}">Detalhes</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Adicionar Endereço</h3>
+    <form action="/adicionar_endereco" method="post">
+        <input type="text" name="loguin" placeholder="Loguin do Cliente" required>
+        <input type="text" name="cidade" placeholder="Cidade" required>
+        <input type="text" name="bairro" placeholder="Bairro" required>
+        <input type="text" name="rua" placeholder="Rua" required>
+        <input type="text" name="numero" placeholder="Número" required>
+        <input type="text" name="ponto_referencia" placeholder="Ponto de Referência" required>
+        <button type="submit">Adicionar Endereço</button>
+    </form>
+</body>
+</html>

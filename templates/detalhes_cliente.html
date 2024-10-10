@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Detalhes do Cliente</title>
+</head>
+<body>
+    <h1>Detalhes do Cliente: {{ cliente.nome }}</h1>
+    <p>Email: {{ cliente.email }}</p>
+    <p>Data de Nascimento: {{ cliente.data_nascimento }}</p>
+    <p>Celular: {{ cliente.celular }}</p>
+
+    <h2>Endereços</h2>
+    <ul>
+        {% for endereco in cliente.enderecos %}
+            <li>{{ endereco.rua }}, {{ endereco.numero }}, {{ endereco.bairro }}, {{ endereco.cidade }} - Ponto de referência: {{ endereco.ponto_referencia }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Voltar</a>
+</body>
+</html>
